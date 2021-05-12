@@ -4,6 +4,8 @@ Simple Booking App created with node.js and mongoDB for the back-end and jquery,
 
 It has all the feature : booking, check booking info, cancell booking
 
+live App : https://booking-app-yuchan.herokuapp.com/booking/
+
 ## Features
 
 **home screen**
