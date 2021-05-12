@@ -1,7 +1,21 @@
 body {
-  background-color: #16727e;
+  position: relative;
   margin: 0;
   padding: 0;
+}
+
+body::before{
+  content: ""; 
+  background-image: url("https://i.imgur.com/acIK6oT.jpg");  
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 /* home screen */
@@ -11,6 +25,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 #form-box {
