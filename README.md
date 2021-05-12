@@ -1,6 +1,6 @@
 # Booking App
 
-Simple Booking App created with node.js and express-handlebars for the back-end and jquery for the front-end
+Simple Booking App created with node.js and mongoDB for the back-end and jquery, html and css for the front-end work
 
 It has all the feature : booking, check booking info, cancell booking
 
@@ -39,6 +39,6 @@ It has all the feature : booking, check booking info, cancell booking
 
 ___
 
-#### comment 
+### comment 
 this is the first project which I created with both back-end and front-end from the scratch.
 it was a very good opportunity learning and understanding back-end work, such as route, path, parameters, setting environment, and connect to client side.
