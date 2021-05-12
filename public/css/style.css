@@ -1,0 +1,196 @@
+body {
+  background-color: #16727e;
+  margin: 0;
+  padding: 0;
+}
+
+/* home screen */
+#home-screen {
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-box {
+  width: 600px;
+  min-height: 340px;
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: aliceblue;
+  font-family: Arial, sans-serif;
+}
+
+#form-box label {
+  margin-bottom: 0;
+}
+
+#date-check {
+  display: inline;
+  margin-left: 5px;
+  width: 80px;
+  height: 27px;
+  border-radius: 3px;
+  font-size: 14px;
+  background-color: #ADC8D9;
+}
+
+#home-err-message {
+  width: 600px;
+  text-align: center;
+  color: red;
+}
+
+.formBtn {
+  width: 130px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #4da2ad;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+
+/* confirmation screen*/
+#confirmation-screen {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#confirm-display {
+  width: 600px;
+  height: 350px;
+  background-color: aliceblue;
+  border: 1px solid;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+}
+.booked-content p {
+  white-space: pre;
+}
+
+/* check screen */
+
+#check-screen {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding: 0;
+}
+
+#check-display {
+  width: 600px;
+  height: 350px;
+  background-color: aliceblue;
+  border: 1px solid;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+}
+
+#check-display label {
+  font-size: 15px;
+  margin: 10px 0 0 0;
+  font-weight: 600;
+}
+
+#check-display input {
+  height: 30px;
+}
+
+#check-screen h5 {
+  position: absolute;
+  width: 600px;
+  text-align: center;
+  margin-top: 15px;
+  color: red;
+}
+
+#check-btn {
+  width: 130px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #4da2ad;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+}
+
+#check-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 80px;
+}
+
+#check-submit {
+  margin-top: 15px;
+}
+
+#check-back {
+  margin: 0 30px 0 145px;
+}
+
+/* booked screen*/
+#booked-screen {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#booked-display {
+  width: 600px;
+  min-height: 330px;
+  margin: 30px auto;
+  background-color: aliceblue;
+  border: 1px solid;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+}
+
+.booked-txt {
+  font-weight: 500;
+  margin: 10px 0 0 150px;
+}
+
+.booking-line {
+  width: 600px;
+  height: 35px;
+  font-size: 17px;
+  margin-top: 18px;
+  text-align: end;
+}
+
+.booking-time {
+  margin-right: 50px;
+}
+
+.booking-delete {
+  margin-right: 150px;
+}

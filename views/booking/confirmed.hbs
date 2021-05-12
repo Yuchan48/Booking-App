@@ -1,0 +1,22 @@
+<div id="confirmation-screen">
+    <div id="confirm-display">
+        <div id="confirm-title">
+            <h1 style="margin-top: 20px;">Booking Completed <i class="far fa-check-square fa-lg" style="margin: 10px 0 0 20px;"></i></h1>
+            <br>
+        </div>
+        {{#data}}
+        <div class="booked-content">
+            <p>Name:  {{firstName}}  {{lastName}}</p>
+            <p>E-mail :  {{email}}</p>
+            <p>Phone :  {{phone}}</p>
+            <p>Date :  {{selectedDate}} at {{selectedTime}}</p>
+        </div>
+        {{/data}}
+
+        <div class="back-to-home" style="width: 100%; text-align: end; margin: 0 100px 0 0;">
+            <a href="/booking"><i class="fas fa-home fa-3x" aria-hidden="true"></i></a>
+            <p style="margin: 0 -7px 0  0; font-size: 13px;"><small>back to home</small></p>
+        </div>
+
+    </div>
+</div>
