@@ -8,7 +8,7 @@ It has all the feature : booking, check booking info, cancell booking
 
 **home screen**
 
-![home screen](https://i.imgur.com/1WwQ9Bdm.jpg)
+![home screen](https://i.imgur.com/IWGlo2qm.jpg)
 
 - you can make booking daily from 9:00-21:00 for next 60days.
 - you can not book past date 
@@ -19,19 +19,19 @@ It has all the feature : booking, check booking info, cancell booking
 
 **confirmation screen**
 
-![alt confirmation screen](https://i.imgur.com/qg3NflWm.jpg)
+![alt confirmation screen](https://i.imgur.com/QCSHcdkm.jpg)
 
 - when the booking is completed, you will see on the next confirmation screen with the booking info
 
 **check screen**
 
-![check screen](https://i.imgur.com/1T3hCH4m.jpg)
+![check screen](https://i.imgur.com/a5qi85vm.jpg)
 
 - you can check all your booking providing required info
 
 **booking information screen**
 
-![exist booking](https://i.imgur.com/gTidVcrm.jpg)
+![exist booking](https://i.imgur.com/i2iL627m.jpg)
 
 - you can see all of your booking in ascending order
 - you can delete your booking
