@@ -8,12 +8,12 @@
           <div style="display: flex; justify-content: space-around">
 
             <div id="firstNameD" style="width: 280px; height: 60px">
-              <label for="firstName" style="font-size: 15px; font-weight: 700; margin-bottom: 0;">First Name</label>
+              <label for="firstName" style="font-size: 15px; font-weight: 700; margin-bottom: 0;">First Name <small>required</small></label>
               <input type="text" name="firstName" id="firstName" placeholder="First Name" style="width: 90%; text-transform: capitalize;" />
             </div>
 
             <div id="lastNameD" style="width: 280px; height: 60px">
-              <label for="lastName" style="font-size: 15px; font-weight: 700">Last Name</label>              
+              <label for="lastName" style="font-size: 15px; font-weight: 700">Last Name <small> required</small></label>              
               <input type="text" name="lastName" id="lastName" placeholder="Last Name" style="width: 90%; text-transform: capitalize;" />
             </div>
 
@@ -22,7 +22,7 @@
           <div style="display: flex; justify-content: space-around">
 
             <div id="emailD" style="width: 280px; height: 60px">
-              <label for="email" style="font-size: 15px; font-weight: 700">Email</label>              
+              <label for="email" style="font-size: 15px; font-weight: 700">Email <small> required</small></label>              
               <input type="text" name="email" id="email" placeholder="email" style="width: 90%"  />
             </div>
 
@@ -36,13 +36,13 @@
           <div style="display: flex; justify-content: space-around">
 
             <div id="dateD" style="width: 280px; height: 60px;">
-              <label for="selectedDate" style="font-size: 15px; font-weight: 700; display: block;">Date</label>
+              <label for="selectedDate" style="font-size: 15px; font-weight: 700; display: block;">Date <small> required</small></label>
               <input type="date" name="selectedDate" id="selectedDate" placeholder="Date" style="width: 60%; display: inline;" />
               <button id="date-check" type="submit" formaction="/booking/datecheck" formmethod="GET">Check<i class="far fa-calendar-check" style="margin-left: 3px;"></i></button>
             </div>
 
             <div id="timeD" style="width: 280px; height: 60px">
-              <label for="selectedTime" style="font-size: 15px; font-weight: 700">Time</label>
+              <label for="selectedTime" style="font-size: 15px; font-weight: 700">Time <small> required</small></label>
               <br />
               <select name="selectedTime" id="selectedTime" placeholder="Time" style="width: 50%; font-weight: 500"></select>
             </div>

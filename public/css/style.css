@@ -26,6 +26,10 @@ body {
   margin-bottom: 0;
 }
 
+#form-box small {
+  color: #3E588C;
+}
+
 #date-check {
   display: inline;
   margin-left: 5px;
