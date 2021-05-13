@@ -1,23 +1,24 @@
 <div id="booked-screen">
     <div id="booked-display">
-    <h2 style="font-weight: 600; text-align: center; margin-top: 20px;">booking information</h2>
-
-    <div id="info-boxB" style="margin: 15px 0 30px 0;">
-      <p class="booked-txt"> Your Name : {{firstName}} {{lastName}}</p>
-      <p class="booked-txt">Your email : {{email}}</p>
+        <h2 style="font-weight: 600; text-align: center; margin-top: 20px;">booking information</h2>
+    
+        <div id="info-boxB" style="margin: 15px 0 30px 0;">
+          <p class="booked-txt">Your first name : {{firstName}}</p>
+          <p class="booked-txt">Your last name : {{lastName}}</p>
+          <p class="booked-txt">Your email : {{email}}</p>
+        </div>
+    
+        {{#each list}}
+        <div class="booking-line">
+          <p class="booking-time" style="display: inline;">{{this.selectedDate}} at {{this.selectedTime}}</p>
+          <a href="/booking/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this booking ?');"><i 
+                class="fa fa-trash fa-lg booking-delete" style="display: inline;" aria-hidden="true"></i></a>
+        </div>
+        {{/each}}
+    
+        <div id="booked-back" class="back-to-home" style="text-align: end; margin: 50px 40px 8px 0;">
+            <a href="/booking"><i class="fas fa-home fa-3x" aria-hidden="true"></i></a>
+            <p style="margin: 0 -7px 0  0; font-size: 13px;"><small>back to home</small></p>
+        </div>
     </div>
-
-    {{#each list}}
-    <div class="booking-line">
-      <p class="booking-time" style="display: inline;">{{this.selectedDate}} at {{this.selectedTime}}</p>
-      <a href="/booking/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this booking ?');"><i 
-            class="fa fa-trash fa-lg booking-delete" style="display: inline;" aria-hidden="true"></i></a>
-    </div>
-    {{/each}}
-
-    <div id="booked-back" class="back-to-home" style="text-align: end; margin: 50px 40px 8px 0;">
-        <a href="/booking"><i class="fas fa-home fa-3x" aria-hidden="true"></i></a>
-        <p style="margin: 0 -7px 0  0; font-size: 13px;"><small>back to home</small></p>
-    </div>
-</div>
 </div>

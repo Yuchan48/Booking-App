@@ -5,52 +5,58 @@
         <h1 id="form-title" style="font-size: 30px; margin: 15px; text-align: center">Booking Form</h1>
 
         <form action="/booking" method="POST">
-          <div style="display: flex; justify-content: space-around">
+          <div class="home-input-block">
 
-            <div id="firstNameD" style="width: 280px; height: 60px">
-              <label for="firstName" style="font-size: 15px; font-weight: 700; margin-bottom: 0;">First Name <small>required</small></label>
-              <input type="text" name="firstName" id="firstName" placeholder="First Name" style="width: 90%; text-transform: capitalize;" />
+            <div id="firstNameD" class="home-input">
+              <label for="firstName">First Name <small>required</small></label>
+              <input class="home-media-input" type="text" name="firstName" id="firstName" placeholder="First Name" style=" text-transform: capitalize;" />
             </div>
 
-            <div id="lastNameD" style="width: 280px; height: 60px">
-              <label for="lastName" style="font-size: 15px; font-weight: 700">Last Name <small> required</small></label>              
-              <input type="text" name="lastName" id="lastName" placeholder="Last Name" style="width: 90%; text-transform: capitalize;" />
-            </div>
-
-          </div>
-
-          <div style="display: flex; justify-content: space-around">
-
-            <div id="emailD" style="width: 280px; height: 60px">
-              <label for="email" style="font-size: 15px; font-weight: 700">Email <small> required</small></label>              
-              <input type="text" name="email" id="email" placeholder="email" style="width: 90%"  />
-            </div>
-
-            <div id="phoneD" style="width: 280px; height: 60px">
-              <label for="phone" style="font-size: 15px; font-weight: 700">Phone</label>                            
-              <input type="text" name="phone" id="phone" placeholder="Phone" style="width: 90%" />
+            <br class="home-br">
+            <div id="lastNameD" class="home-input">
+              <label for="lastName">Last Name <small> required</small></label>              
+              <input class="home-media-input" type="text" name="lastName" id="lastName" placeholder="Last Name" style=" text-transform: capitalize;" />
             </div>
 
           </div>
 
-          <div style="display: flex; justify-content: space-around">
+          <div  class="home-input-block">
 
-            <div id="dateD" style="width: 280px; height: 60px;">
-              <label for="selectedDate" style="font-size: 15px; font-weight: 700; display: block;">Date <small> required</small></label>
-              <input type="date" name="selectedDate" id="selectedDate" placeholder="Date" style="width: 60%; display: inline;" />
-              <button id="date-check" type="submit" formaction="/booking/datecheck" formmethod="GET">Check<i class="far fa-calendar-check" style="margin-left: 3px;"></i></button>
+            <div id="emailD" class="home-input">
+              <label for="email">Email <small> required</small></label>              
+              <input class="home-media-input" type="text" name="email" id="email" placeholder="email"  />
+            </div>
+   
+            <br class="home-br">
+            <div id="phoneD" class="home-input">
+              <label for="phone">Phone</label>                            
+              <input class="home-media-input" type="text" name="phone" id="phone" placeholder="Phone" />
             </div>
 
-            <div id="timeD" style="width: 280px; height: 60px">
-              <label for="selectedTime" style="font-size: 15px; font-weight: 700">Time <small> required</small></label>
+          </div>
+
+          <div  class="home-input-block">
+
+            <div id="home-dateD" class="home-input">
+              <label for="selectedDate" style="display: block;">Date <small> required</small></label>
+              
+              <div id="dateD-align">
+                <input type="date" name="selectedDate" id="selectedDate" placeholder="Date" style="width: 60%;" />
+                <button id="date-check" type="submit" formaction="/booking/datecheck" formmethod="GET" >Check<i class="far fa-calendar-check"></i></button>
+              </div>
+            </div>
+
+            <br class="home-br">
+            <div id="timeD" class="home-input">
+              <label for="selectedTime">Time <small> required</small></label>
               <br />
-              <select name="selectedTime" id="selectedTime" placeholder="Time" style="width: 50%; font-weight: 500"></select>
+              <select name="selectedTime" id="selectedTime" placeholder="Time" style="width: 50%; font-weight: 500;"></select>
             </div>
 
           </div>
 
           <div id="availableApp">             
-             <p style="margin: 10px 30px; font-size: 15px;">{{availableTime}}</p>
+             <p style="margin: 20px 30px; font-size: 14px;">{{availableTime}}</p>
           </div>
 
           <div id="home-err-message">{{homeError}}</div>

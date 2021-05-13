@@ -1,29 +1,31 @@
 <div id="check-screen">
     <div id="check-display">
         <div id="check-title">
-            <h2 style="text-align: center; margin-top: 10px;">Check your booking<i class="fas fa-search fa-lg" style="margin: 10px 0 0 20px"></i></h2>
+            <p id="check-line">Check your booking</p>
+            <i class="fas fa-search"></i>
         </div>
         <form action="/booking/booked" method="GET">
             <div class="forms-column" style="width: 100%; display: flex; justify-content: space-evenly">
-            <div id="firstNameD" class="forms" style="width: 280px;">
-                <label for="firstName">First Name</label>
-                <br />
-                <input type="text" name="firstName" id="firstName" placeholder="First Name" style="width: 90%; text-transform: capitalize;" required />
-                <div style="display: none">{{employee.fullNameError}}</div>
+                <div id="firstNameD" class="forms">
+                    <label for="firstName">First Name</label>
+                    <br />
+                    <input type="text" name="firstName" id="firstName" placeholder="First Name" style=" text-transform: capitalize;" required />
+                    <div style="display: none">{{employee.fullNameError}}</div>
+                </div>
+                <div id="lastNameD" class="forms">
+                    <label for="lastName">Last Name</label>
+                    <br />
+                    <input type="text" name="lastName" id="lastName" placeholder="Last Name" style=" text-transform: capitalize;" required />
+                    <div style="display: none">{{employee.fullNameError}}</div>
+                </div>
             </div>
-            <div id="lastNameD" class="forms" style="width: 280px;">
-                <label for="lastName">Last Name</label>
-                <br />
-                <input type="text" name="lastName" id="lastName" placeholder="Last Name" style="width: 90%; text-transform: capitalize;" required />
-                <div style="display: none">{{employee.fullNameError}}</div>
-            </div>
-        </div>
 
-        <div id="emailD" class="forms" style="margin-left: 15px">
+        <div id="check-screen-email" class="forms">
             <label for="email">Email</label>
             <br />
-            <input type="email" name="email" id="email" class="emailVal" placeholder="email" style="width: 93%" required />
-            <div style="display: none">{{employee.emailError}}</div>
+            <div id="check-email-box">
+                <input type="email" name="email" id="email" class="emailVal" placeholder="email" required />
+            </div>
         </div>
         
         <h5>{{errMessage}}</h5>
@@ -34,7 +36,7 @@
                 </div>
 
                 <div class="back-to-home" id="check-back">
-                    <a href="/booking"><i class="fas fa-home fa-3x" aria-hidden="true"></i></a>
+                    <a href="/booking"><i class="fas fa-home" aria-hidden="true"></i></a>
                     <p style="margin: 0 -7px 0  0; font-size: 13px;"><small>back to home</small></p>
                 </div>
             </div>
