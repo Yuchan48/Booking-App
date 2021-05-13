@@ -1,6 +1,6 @@
 # Booking App
 
-Simple Booking App created with node.js and mongoDB for the back-end and jquery, html and css for the front-end work
+Simple Booking App created with node.js and mongoDB for the back-end and jquery, html and css (responsive design) for the front-end work
 
 It has all the feature : booking, check booking info, cancell booking
 
@@ -37,6 +37,11 @@ It has all the feature : booking, check booking info, cancell booking
 
 - you can see all of your booking in ascending order
 - you can delete your booking
+
+___
+**mobile version**
+
+![mobile image](https://i.imgur.com/Xmiml7zm.jpg)
 
 
 ___
