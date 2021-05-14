@@ -15,11 +15,9 @@ let app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/booking/check", express.static("public"));
-app.use("/booking/booked", express.static("public"));
-app.use("/booking/confirmed", express.static("public"));
-app.use("/booking/", express.static("public"));
-
+app.use("/check", express.static("public"));
+app.use("/booked", express.static("public"));
+app.use("/confirmed", express.static("public"));
 
 app.use(
   bodyParser.urlencoded({
@@ -29,6 +27,8 @@ app.use(
 app.use(bodyParser.json());
 
 app.set("views", path.join(__dirname, "/views/"));
+
+
 app.engine(
   "hbs",
   exphbs({
@@ -49,8 +49,6 @@ app.listen(process.env.PORT || 3000, () => {
   console.log("Express server started at port : " + (process.env.PORT || 3000));
 });
 
+app.use(bookingController);
 
-
-app.use("/booking", bookingController);
-app.use("/booking/check", bookingController);
 

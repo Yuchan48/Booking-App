@@ -11,13 +11,13 @@
         {{#each list}}
         <div class="booking-line">
           <p class="booking-time" style="display: inline;">{{this.selectedDate}} at {{this.selectedTime}}</p>
-          <a href="/booking/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this booking ?');"><i 
+          <a href="/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this booking ?');"><i 
                 class="fa fa-trash fa-lg booking-delete" style="display: inline;" aria-hidden="true"></i></a>
         </div>
         {{/each}}
     
         <div id="booked-back" class="back-to-home" style="text-align: end; margin: 50px 40px 8px 0;">
-            <a href="/booking"><i class="fas fa-home fa-3x" aria-hidden="true"></i></a>
+            <a href="/"><i class="fas fa-home fa-3x" aria-hidden="true"></i></a>
             <p style="margin: 0 -7px 0  0; font-size: 13px;"><small>back to home</small></p>
         </div>
     </div>

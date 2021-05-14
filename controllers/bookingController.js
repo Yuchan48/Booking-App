@@ -134,7 +134,7 @@ function saveBooking(req, res) {
 
   booking.save((err, doc) => {
     if (!err) {
-      res.redirect("/booking/confirmed/?id=" + doc._id);
+      res.redirect("/confirmed/?id=" + doc._id);
     } else {
       res.render("booking/home", { homeError: "error booking" });
       console.log("Error during sending data : " + err);
@@ -172,9 +172,9 @@ router.get("/booked", (req, res) => {
     { firstName: firstName, lastName: lastName, email: email },
     (err, docs) => {
       if (docs == "") {
-        res.redirect("/booking/check/?err=notfound");
+        res.redirect("/check/?err=notfound");
       } else if (err) {
-        res.redirect("booking/check/?err=error");
+        res.redirect("/check/?err=error");
       } else {
         res.render("booking/booked", {
           firstName: firstName,
@@ -192,7 +192,13 @@ function dateAsc(docs) {
   let resultStr = docs.sort(
     (a, b) => new Date(a.dateTimeArr) - new Date(b.dateTimeArr)
   );
-  return resultStr;
+//filter out the past date  
+  let resultArr = resultStr.filter(ele => {
+    let currentTimeTest = new Date().getTime();
+    let filteredStr = new Date(ele.dateTimeArr).getTime();
+    return filteredStr > currentTimeTest
+  });
+  return resultArr;
 }
 
 router.get("/delete/:id", (req, res) => {
@@ -200,7 +206,7 @@ router.get("/delete/:id", (req, res) => {
     if (!err) {
       console.log("deleted");
       res.redirect(
-        "/booking/booked/?firstName=" +
+        "/booked/?firstName=" +
           doc.firstName +
           "&lastName=" +
           doc.lastName +
@@ -217,15 +223,15 @@ router.get("/delete/:id", (req, res) => {
 router.get("/datecheck", (req, res) => {
   let dateToCheck = req.query.selectedDate;
   if (dateToCheck == "") {
-    res.redirect("/booking/?err=emptydate");
+    res.redirect("/?err=emptydate");
   } else {
-    res.redirect("/booking/?datetocheck=" + dateToCheck);
+    res.redirect("/?datetocheck=" + dateToCheck);
   }
 });
 
 // guide to /booked from /check
 router.get("/booked/:firstName/:lastName/:email", (req, res) => {
-  res.redirect("/booking/booked");
+  res.redirect("/booked");
 });
 
 module.exports = router;

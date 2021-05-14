@@ -4,7 +4,7 @@
       <div id="form-box">
         <h1 id="form-title" style="font-size: 30px; margin: 15px; text-align: center">Booking Form</h1>
 
-        <form action="/booking" method="POST">
+        <form action="/" method="POST">
           <div class="home-input-block">
 
             <div id="firstNameD" class="home-input">
@@ -42,7 +42,7 @@
               
               <div id="dateD-align">
                 <input type="date" name="selectedDate" id="selectedDate" placeholder="Date" style="width: 60%;" />
-                <button id="date-check" type="submit" formaction="/booking/datecheck" formmethod="GET" >Check<i class="far fa-calendar-check"></i></button>
+                <button id="date-check" type="submit" formaction="/datecheck" formmethod="GET" >Check<i class="far fa-calendar-check"></i></button>
               </div>
             </div>
 
@@ -65,7 +65,7 @@
             <button id="homeBtn" class="formBtn" type="submit">
               <i class="fa fa-database"></i>Submit</button>
             
-            <a id="modify-link" href="/booking/check" style="font-weight: 600; font-size: 13px; margin: 5px 0;"
+            <a id="modify-link" href="/check" style="font-weight: 600; font-size: 13px; margin: 5px 0;"
               ><i class="fa fa-list-alt"></i> View or Cancel your booking</a>
           </div>
 
