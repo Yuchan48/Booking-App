@@ -168,7 +168,7 @@ body::before {
 }
 
 .booked-content p {
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 @media (max-width: 650px) {
