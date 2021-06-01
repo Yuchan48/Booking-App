@@ -6,7 +6,8 @@ const Booking = mongoose.model("Booking");
 
 router.get("/", (req, res) => {
   if (req.query.err === "emptydate") {
-    res.render("booking/home", { homeError: "please select a date" });
+    const {firstName, lastName, email, phone} = req.query;
+    res.render("booking/home", { homeError: "please select a date", firstName: firstName, lastName: lastName, phone: phone, email: email });
   } else if (typeof req.query.datetocheck == "string") {
     dateTest(req, res);
   } else {
@@ -15,20 +16,20 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const { selectedDate, selectedTime } = req.body;
+  const { selectedDate, selectedTime, firstName, lastName, phone, email } = req.body;
   const date = new Date(selectedDate).toDateString();
   if (
     isInfoMissing(req, res) == true &&
-    isDateValid(req, res) == true &&
-    isInfoValid(req, res) == true
+    isDateValid(req, res) == true 
+    //&& isInfoValid(req, res) == true
   ) {
     Booking.find(
       { selectedDate: date, selectedTime: selectedTime },
       (err, doc) => {
         if (doc != "") {
-          res.render("booking/home", { homeError: "date not available" });
+          res.render("booking/home", { homeError: "time not available", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: selectedDate });
         } else if (err) {
-          res.render("booking/home", { homeError: "err booking" });
+          res.render("booking/home", { homeError: "err booking", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: selectedDate });
         } else {
           saveBooking(req, res);
         }
@@ -38,15 +39,16 @@ router.post("/", (req, res) => {
 });
 
 function dateTest(req, res) {
+  const {firstName, lastName, phone, email, datetocheck} = req.query;
   let checkDate = new Date(req.query.datetocheck).getTime();
   const today = new Date().toDateString();
   let currentTimeTest = new Date(today).getTime();
   let sixtyDays = checkDate - currentTimeTest;
   if (checkDate < currentTimeTest) {
-    res.render("booking/home", { homeError: "date already past" });
+    res.render("booking/home", { homeError: "date already past", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: datetocheck });
   } else if (sixtyDays >= 5184000000) {
     res.render("booking/home", {
-      homeError: "You can only check booking for next 60 days",
+      homeError: "You can only check booking for next 60 days", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: datetocheck
     });
   } else {
     let checkDateStr = new Date(req.query.datetocheck).toDateString();
@@ -63,11 +65,11 @@ function dateTest(req, res) {
         );
         
         res.render("booking/home", {
-          availableTime: availableTimes.join(", "),
+          availableTime: availableTimes.join(", "), firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: datetocheck
         });
       } else {
         console.log("error finding available time");
-        res.render("booking/home", { homeErr: "error searching for time" });
+        res.render("booking/home", { homeErr: "error searching for the time", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: datetocheck });
       }
     });
   }
@@ -75,44 +77,26 @@ function dateTest(req, res) {
 
 // validate info for POST /booking
 function isInfoMissing(req, res) {
-  const { firstName, lastName, email, selectedDate, selectedTime } = req.body;
+  const { firstName, lastName, email, selectedDate, selectedTime, phone } = req.body;
   let testArr = [firstName, lastName, email, selectedDate, selectedTime];
   const isEmptyArr = (ele) => ele == "";
   if (testArr.some(isEmptyArr)) {
-    res.render("booking/home", { homeError: "required field missing" });
+    res.render("booking/home", { homeError: "required field missing", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: selectedDate });
   } else {
     return true;
   }
 }
 
 function isDateValid(req, res) {
-  const { selectedDate, selectedTime } = req.body;
+  const { firstName, lastName, email, selectedDate, selectedTime, phone } = req.body;
   let timeTest = new Date(selectedDate + ", " + selectedTime).getTime();
   let currentTimeTest = new Date().getTime();
   let sixtyDays = timeTest - currentTimeTest;
   if (timeTest < currentTimeTest) {
-    res.render("booking/home", { homeError: "Date must not be in the past" });
+    res.render("booking/home", { homeError: "Date must not be in the past", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: selectedDate });
   } else if (sixtyDays > 5184000000) {
     res.render("booking/home", {
-      homeError: "You can only make booking for next 60 days",
-    });
-  } else {
-    return true;
-  }
-}
-
-function isInfoValid(req, res) {
-  const { firstName, lastName, phone, email } = req.body;
-  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
-  let nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z ]*)*$/;
-  if (
-    (!email.match(emailRegex) && email !== "") ||
-    (!phone.match(phoneRegex) && phone !== "") ||
-    (!firstName.match(nameRegex) && firstName !== "") ||
-    (!lastName.match(nameRegex) && lastName !== "")
-  ) {
-    res.render("booking/home", { homeError: "" });
+      homeError: "You can only make booking for next 60 days", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: selectedDate });
   } else {
     return true;
   }
@@ -120,23 +104,25 @@ function isInfoValid(req, res) {
 
 //save in mongodb
 function saveBooking(req, res) {
-  let shortened = new Date(req.body.selectedDate).toDateString();
+  const { firstName, lastName, email, selectedDate, selectedTime, phone } = req.body;
 
+  let shortened = new Date(selectedDate).toDateString();
+  
   let booking = new Booking({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    phone: req.body.phone,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    phone: phone,
     selectedDate: shortened,
-    selectedTime: req.body.selectedTime,
-    dateTimeArr: shortened + "," + req.body.selectedTime,
+    selectedTime: selectedTime,
+    dateTimeArr: shortened + "," + selectedTime,
   });
 
   booking.save((err, doc) => {
     if (!err) {
       res.redirect("/confirmed/?id=" + doc._id);
     } else {
-      res.render("booking/home", { homeError: "error booking" });
+      res.render("booking/home", { homeError: "error booking", firstName: firstName, lastName: lastName, phone: phone, email: email, selectedDate: selectedDate });
       console.log("Error during sending data : " + err);
     }
   });
@@ -157,10 +143,11 @@ router.get("/confirmed", (req, res) => {
 
 router.get("/check", (req, res) => {
   const searchError = req.query.err;
+  const { firstName, lastName, email } = req.query;
   if (searchError == "notfound") {
-    res.render("booking/check", { errMessage: "no booking found" });
+    res.render("booking/check", { errMessage: "no booking found", firstName: firstName, lastName: lastName, email: email });
   } else if (searchError == "error") {
-    res.render("booking/check", { errMessage: "error finding booking" });
+    res.render("booking/check", { errMessage: "error finding booking", firstName: firstName, lastName: lastName, email: email });
   } else {
     res.render("booking/check");
   }
@@ -171,10 +158,10 @@ router.get("/booked", (req, res) => {
   Booking.find(
     { firstName: firstName, lastName: lastName, email: email },
     (err, docs) => {
-      if (docs == "") {
-        res.redirect("/check/?err=notfound");
+      if (!docs.length || !dateAsc(docs).length) {
+        res.redirect("/check/?err=notfound&firstName=" + firstName + "&lastName=" + lastName + "&email=" + email);
       } else if (err) {
-        res.redirect("/check/?err=error");
+        res.redirect("/check/?err=error&firstName=" + firstName + "&lastName=" + lastName + "&email=" + email);
       } else {
         res.render("booking/booked", {
           firstName: firstName,
@@ -222,10 +209,11 @@ router.get("/delete/:id", (req, res) => {
 // check available timeslot in home screen
 router.get("/datecheck", (req, res) => {
   let dateToCheck = req.query.selectedDate;
+  const {firstName, lastName, phone, email} = req.query
   if (dateToCheck == "") {
-    res.redirect("/?err=emptydate");
+    res.redirect("/?err=emptydate&firstName=" + firstName + "&lastName=" + lastName + "&phone=" + phone + "&email=" + email);
   } else {
-    res.redirect("/?datetocheck=" + dateToCheck);
+    res.redirect("/?datetocheck=" + dateToCheck + "&firstName=" + firstName + "&lastName=" + lastName + "&phone=" + phone + "&email=" + email);
   }
 });
 

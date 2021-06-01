@@ -15,14 +15,16 @@ const renderForm = () => {
   $("#homeBtn").on("click", function() {    
     let emailInput = $("#email").val();
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    if (!emailInput.match(emailRegex) && emailInput !== ""){
-      alert("invalid email address")
+    if (!emailInput.match(emailRegex) && emailInput !== ""){ 
+      alert("invalid email address");  
+      return false;
     }
 
     let phoneNum = $("#phone").val();
     const phoneRegex =  /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
     if (!phoneNum.match(phoneRegex) && phoneNum !== ""){
-      alert("invalid phone number")
+      alert("invalid phone number");
+      return false;
     } 
 
     let firstNameInput = $("#firstName").val();
@@ -30,9 +32,11 @@ const renderForm = () => {
     let nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z ]*)*$/;     
     if (!firstNameInput.match(nameRegex) && firstNameInput !== ""){
       alert("invalid first name");
+      return false;
     }
     if (!lastNameInput.match(nameRegex) && lastNameInput !== ""){
       alert("invalid last name");
+      return false;
     }    
   });
 };
